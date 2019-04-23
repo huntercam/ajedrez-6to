@@ -26,7 +26,7 @@ class Reina implements PiezaDeAjedrez{
 	}
 	
 	function imprimir_celda(int $x, int $y){
-		echo (chr($x+ 64) ) . $y;
+			echo (chr($x+64)) . $y;
 	}
 
 	function movimientosPosibles(){
@@ -37,19 +37,24 @@ class Reina implements PiezaDeAjedrez{
 
 			echo "\nHorizontales: \n";
 			for($i = 1; $i <= 8; $i ++){
+					
+				if($i != $this->celdax){
 				$this->imprimir_celda($i , $this->celday );
 				
 				if( $i+1 <= 8 )
 				echo " , ";
-				
+				}
 			}
 		
 			echo "\n\nVerticales: \n";
 			for($i = 1; $i <= 8; $i ++){
+
+				if($i != $this->celday){
 				$this->imprimir_celda( $this->celdax , $i);
 				
 				if( $i+1 <= 8 )
 				echo " , ";			
+				}
 			}
 			
 		
@@ -63,10 +68,11 @@ class Reina implements PiezaDeAjedrez{
 				}
 				
 				while($auxx <= 8 && $auxy <= 8){
+					if(($auxx != $this->celdax) && ($auxy != $this->celday)){
 					$this->imprimir_celda($auxx,$auxy);
 					if( $auxx+1 <= 8 && $auxy+1 <= 8 )
 					echo " , ";
-					
+					}
 					$auxx++;
 					$auxy++;
 				}
@@ -82,11 +88,12 @@ class Reina implements PiezaDeAjedrez{
 			}
 			
 			while($auxx >= 1 && $auxy <= 8){
+				if(($auxx != $this->celdax) && ($auxy != $this->celday)){
 				$this->imprimir_celda($auxx,$auxy);
 				
 				if($auxx-1 >= 1 && $auxy-1 <= 8)
 				echo " , ";
-				
+				}
 				$auxx--;
 				$auxy++;
 			}
